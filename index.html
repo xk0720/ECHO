@@ -84,8 +84,10 @@
       font-size: 1.1rem;
       margin-top: 0.6rem;
     }
-    .publication-authors a { color: #2563eb; }
-    .publication-authors a:hover { text-decoration: underline; }
+    .publication-authors a { color: #2563eb !important; text-decoration: none; }
+    .publication-authors a:hover { text-decoration: underline !important; }
+    .publication-authors a[href="javascript:void(0)"] { cursor: default; }
+    .publication-authors a[href="javascript:void(0)"]:hover { text-decoration: none !important; }
     .author-block { display: inline-block; margin: 0 0.15rem; }
     .eql-cntrb { color: #888; }
 
