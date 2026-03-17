@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation">
+  <meta name="description" content="ECHO is a novel Interactive Head Generation framework that produces emotionally appropriate and contextually aware avatar facial behaviors in dyadic face-to-face conversations.">
+  <meta name="keywords" content="interactive head generation, talking head, facial behavior, emotion, context-aware, digital human, video generation, multimodal">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="FIRST_AUTHOR, SECOND_AUTHOR">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation">
+  <meta property="og:description" content="ECHO is a novel Interactive Head Generation framework that produces emotionally appropriate and contextually aware avatar facial behaviors in dyadic face-to-face conversations.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://xk0720.github.io/ECHO">
+  <meta property="og:image" content="static/images/overview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation">
+  <meta name="twitter:description" content="ECHO is a novel Interactive Head Generation framework that produces emotionally appropriate and contextually aware avatar facial behaviors in dyadic face-to-face conversations.">
+  <meta name="twitter:image" content="static/images/overview.png">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation">
+  <!-- TODO: Replace with actual author names -->
+  <meta name="citation_author" content="LAST_NAME, FIRST_NAME">
+<!--  <meta name="citation_publication_date" content="2025">-->
+<!--  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2505.19437.pdf">-->
+
+  <title>ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans:400,600,700&display=swap" rel="stylesheet">
+
+  <!-- Template original CSS/JS (commented out, uncomment if using template's static assets) -->
+  <!--
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  -->
+
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; background: #f5f5f5; }
+
+    /* ===== Hero / Title ===== */
+    .hero-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #1a1a1a;
+    }
+
+    .publication-authors {
+      font-size: 1.1rem;
+      margin-top: 0.6rem;
+    }
+    .publication-authors a { color: #4a6fa5; }
+    .publication-authors a:hover { text-decoration: underline; }
+    .author-block { display: inline-block; margin: 0 0.15rem; }
+    .eql-cntrb { color: #888; }
+
+    /* ===== Link Buttons ===== */
+    .publication-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .publication-links .button {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    /* ===== Section ===== */
+    .section-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 2px solid #e0e0e0;
+      margin-bottom: 2.5rem;
+    }
+
+    .subsection-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.40rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ===== Video ===== */
+    .video-block { margin-bottom: 2.5rem; }
+
+    .text-caption {
+      text-align: justify;
+      font-size: 1.0rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.6rem;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+    }
+
+    /* ===== Abstract ===== */
+    .abstract-text {
+      text-align: justify;
+      font-size: 1.05rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* ===== Images ===== */
+    .ablation-image-medium {
+      width: 83%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+    .ablation-image-small {
+      width: 75%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+
+    /* ===== BibTeX ===== */
+    .bibtex-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .copy-bibtex-btn {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .copy-bibtex-btn:hover { background: #e0e0e0; }
+    #bibtex-code {
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      font-size: 0.88rem;
+      overflow-x: auto;
+    }
+
+    /* ===== Footer ===== */
+    footer { background: #fafafa; }
+
+    /* ===== Image Caption ===== */
+    .img-caption {
+      margin-top: 8px;
+      color: #555;
+      text-align: justify;
+      font-size: 0.9rem;
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation",
+    "description": "A novel Interactive Head Generation framework comprising Long-range Contextual Understanding and Spatial-aware Decoupled Cross-attention Modulation for emotionally appropriate and contextually aware avatar facial behaviors.",
+    "author": [
+      {"@type": "Person", "name": "FIRST_AUTHOR"},
+      {"@type": "Person", "name": "SECOND_AUTHOR"}
+    ],
+    "datePublished": "2025",
+    "url": "https://arxiv.org/abs/2505.19437",
+    "keywords": ["interactive head generation", "talking head", "facial behavior", "emotion-aware", "context-aware"],
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+<!-- Scroll to Top Button (from template, uncomment if needed) -->
+<!--
+<button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+-->
+
+<!-- More Works Dropdown (from template, uncomment if needed) -->
+<!--
+<div class="more-works-container">
+  <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+    <i class="fas fa-flask"></i>
+    More Works
+    <i class="fas fa-chevron-down dropdown-arrow"></i>
+  </button>
+  <div class="more-works-dropdown" id="moreWorksDropdown">
+    <div class="dropdown-header">
+      <h4>More Works from Our Lab</h4>
+      <button class="close-btn" onclick="toggleMoreWorks()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="works-list">
+      <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+        <div class="work-info">
+          <h5>Paper Title 1</h5>
+          <p>Brief description of the work and its main contribution.</p>
+          <span class="work-venue">Conference/Journal 2024</span>
+        </div>
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- ================= HERO / TITLE ================= -->
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+
+      <h1 class="title hero-title">
+        ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation
+      </h1>
+
+      <!-- Authors Row 1 -->
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">
+          <a href="https://github.com/xk0720">Xiangyu Kong</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Xiaoyu Jin</a><sup>2</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Yihan Pan</a><sup>2</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Haoqin Sun</a><sup>3</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Hengde Zhu</a><sup>4</sup></span>
+      </div>
+      <!-- Authors Row 2 -->
+      <div class="is-size-5 publication-authors" style="margin-top:0.2rem;">
+        <span class="author-block">
+          <a href="javascript:void(0)">Xiaoming Xu</a><sup>2</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Xiaoming Wei</a><sup>2</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Lu Liu</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="javascript:void(0)">Siyang Song</a><sup>1</sup></span>
+      </div>
+
+      <div class="is-size-5 publication-authors" style="margin-top:0.3rem;">
+        <!-- TODO: Replace with actual institution names -->
+        <span class="author-block"><sup>1</sup>University of Exeter &nbsp;&nbsp; <sup>2</sup>Meituan &nbsp;&nbsp; <sup>3</sup>Nankai University &nbsp;&nbsp; <sup>4</sup>Tongji University</span>
+<!--        <br>-->
+<!--        <span class="author-block" style="font-size:1rem;">ECCV 2026</span>-->
+<!--        <br>-->
+<!--        <span class="eql-cntrb"><small><sup>*</sup>Equal Contribution</small></span>-->
+      </div>
+
+      <!-- Link Buttons -->
+      <div class="publication-links">
+        <span class="link-block">
+          <a href="https://github.com/xk0720" target="_blank"
+             class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>
+            <span>Paper</span>
+          </a>
+        </span>
+<!--        <span class="link-block">-->
+<!--          <a href="https://arxiv.org/abs/2505.19437" target="_blank"-->
+<!--             class="external-link button is-normal is-rounded is-dark">-->
+<!--            <span class="icon"><i class="ai ai-arxiv"></i></span>-->
+<!--            <span>arXiv</span>-->
+<!--          </a>-->
+<!--        </span>-->
+        <!-- TODO: Replace with your GitHub repo URL -->
+        <span class="link-block">
+          <a href="https://github.com/xk0720" target="_blank"
+             class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>Code</span>
+          </a>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEASER VIDEO ================= -->
+<section class="section" style="padding-top:1.5rem;">
+  <div class="container is-max-desktop has-text-centered">
+    <div class="video-card">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="static/videos/demo_1.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABSTRACT ================= -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-title has-text-centered">Abstract</h2>
+    <hr class="section-divider">
+
+    <p class="abstract-text">
+      In natural face-to-face interaction, participants seamlessly alternate between speaking and listening,
+      producing facial behaviors (FBs) that are finely informed by long-range context and naturally exhibit contextual
+      appropriateness and emotional rationality. Interactive Head Generation (IHG) aims to synthesize
+      lifelike avatar head video emulating such capabilities. Existing IHG methods typically condition on dual-track signals
+      (i.e., human user's behaviors and pre-defined audio for avatar) within a <em>short temporal window</em>,
+      jointly driving generation of avatar's audio-aligned lip articulation and non-verbal FBs.
+      However, two main challenges persist in these methods: (i) the reliance on short-clip behavioral cues without
+      long-range contextual modeling leads them to produce facial behaviors lacking contextual appropriateness;
+      and (ii) the entangled, role-agnostic fusion of dual-track signals empirically introduces cross-signal interference,
+      potentially compromising lip-region synchronization during speaking. To this end, we propose <strong>ECHO</strong>,
+      a novel IHG framework comprising two key components: a <em>Long-range Contextual Understanding</em> (LCU) component that
+      facilitates contextual understanding of both behavior-grounded dynamics and linguistic-driven affective semantics to
+      promote contextual appropriateness and emotional rationality of synthesized avatar FBs; and a block-wise
+      <em>Spatial-aware Decoupled Cross-attention Modulation</em> (SDCM) module, that preserves self-audio-driven lip articulation
+      while adaptively integrating user contextual behavioral cues for non-lip facial regions, complemented by our designed
+      two-stage training paradigm, to jointly enhance lip synchronization and visual fidelity.
+      Extensive experiments demonstrate the effectiveness of proposed components and ECHO's superior IHG performance.
+    </p>
+  </div>
+</section>
+
+<!-- Image carousel (from template, uncomment if needed) -->
+<!--
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">First image description.</h2>
+      </div>
+      <div class="item">
+        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">Second image description.</h2>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+-->
+
+<!-- ================= METHODOLOGY ================= -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-title has-text-centered">Methodology</h2>
+    <hr class="section-divider">
+
+    <div class="content has-text-centered">
+      <div class="column is-full">
+        <img src="static/images/overview.png" class="ablation-image-medium" alt="ECHO overview" loading="lazy">
+        <p class="img-caption">
+          Overview of ECHO and pipeline comparison with existing IHG approaches.
+          (a) Approaches that rely exclusively on dual-track audio signals for avatar
+          FBs generation; (b) Approaches that condition avatar FBs generation on short-range-only
+          context modeling via role-agnostic fusion; (c) Our ECHO, which performs
+          long-range contextual understanding and region-wise decoupled cross-attention mechanism,
+          achieving contextually appropriate and precisely lip-synchronized avatar FBs.
+        </p>
+      </div>
+
+      <div class="column is-full">
+        <img src="static/images/pipeline.png" class="ablation-image-medium" alt="ECHO pipeline" loading="lazy">
+        <p class="img-caption">
+          The pipeline of our proposed <strong>ECHO</strong> framework. ECHO performs long-range contextual understanding
+          grounded in user behavioral dynamics and dyadic linguistic cues to facilitate contextual appropriateness of generated avatar facial behaviors.
+          The SDCM module is introduced for faithful self-audio-driven lip articulation with appropriate non-lip facial dynamics.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIMENTAL RESULTS ================= -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="section-title has-text-centered">Experimental Results</h2>
+    <hr class="section-divider">
+
+    <!-- ===== SOTA Comparison ===== -->
+    <h3 class="subsection-title">Comparison with State-of-the-Art Approaches</h3>
+
+    <p class="text-caption">We present video-based qualitative comparisons to comprehensively demonstrate our ECHO's advantages
+      across diverse conversational contexts, encompassing seamless interaction, listening, and speaking scenarios
+      on the RealTalk, HDTF and Seamless Interaction test datasets.</p>
+
+    <div class="columns is-multiline">
+      <div class="column is-full">
+        <div class="video-card">
+          <video controls playsinline preload="metadata">
+            <source src="static/videos/sota_compare_1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column is-full">
+        <div class="video-card">
+          <video controls playsinline preload="metadata">
+            <source src="static/videos/demo_2.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column is-full">
+        <div class="video-card">
+          <video controls playsinline preload="metadata">
+            <source src="static/videos/sota_compare_2.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-caption">We present additional quantitative and qualitative comparisons on the core Interactive Head Generation (IHG) task,
+      which comprehensively evaluates both speaking and listening capabilities under dyadic interactive settings.</p>
+
+    <div class="column is-full">
+      <img src="static/images/quant_result.png" class="ablation-image-small" alt="Quantitative results" loading="lazy">
+      <p class="img-caption">
+        Quantitative comparison with state-of-the-art IHG approaches. The results qualitatively showcase ECHO's superior performance in
+        reactiveness, motion diversity, visual quality, and lip-synchronization under dyadic interaction settings.
+      </p>
+    </div>
+
+    <div class="column is-full">
+      <img src="static/images/comparison.png" class="ablation-image-small" alt="Qualitative comparison" loading="lazy">
+      <p class="img-caption">
+        Qualitative comparison with open-sourced SOTA methods on interactive head generation.
+        Above two dyadic scenarios including active listening/speaking showcase that our proposed
+        ECHO generates avatar head with more context-consistent and emotionally appropriate
+        facial behaviors, and achieves lip articulation with better audio-visual alignment.
+      </p>
+    </div>
+
+    <!-- ===== Ablation Study ===== -->
+    <h3 class="subsection-title" style="margin-top:40px;">Ablation Study</h3>
+
+    <p class="text-caption">To clearly attribute performance gains to individual designs, we report four
+      component-level ablations and, for each, jointly analyze quantitative metrics and qualitative results.
+      (a) Top-left: Ablation on low-level perception encoding (LPE) by leveraging long-range visual cues;
+      (b) Bottom Left: Ablation on high-level behavior-grounded context understanding (HBCU);
+      (c) Top-right: Ablation on SDCM module;
+      (d) Bottom-right: Ablation on linguistic-driven affective understanding (LAU).</p>
+
+    <div class="column is-full">
+      <img src="static/images/ablation.png" class="ablation-image-medium" alt="Ablation study" loading="lazy">
+    </div>
+
+  </div>
+</section>
+
+<!-- YouTube video (from template, uncomment if needed) -->
+<!--
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- Video carousel (from template, uncomment if needed) -->
+<!--
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Another Carousel</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/carousel1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/carousel2.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- Poster (from template, uncomment if needed) -->
+<!--
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+      <iframe src="static/pdfs/sample.pdf" width="100%" height="550"></iframe>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ================= BibTeX ================= -->
+<!-- TODO: Uncomment and update BibTeX when ready
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <div class="bibtex-header">
+      <h2 class="title is-4">BibTeX</h2>
+      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+        <i class="fas fa-copy"></i>
+        <span class="copy-text">Copy</span>
+      </button>
+    </div>
+    <pre id="bibtex-code"><code>@article{echo2025,
+  title={ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation},
+  author={First Author and Second Author and Third Author and Fourth Author},
+  journal={arXiv preprint arXiv:2505.19437},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+-->
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="text-align:center;">
+          <p>
+            This page was built using the
+            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            Licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function copyBibTeX() {
+  const code = document.querySelector('#bibtex-code code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.querySelector('.copy-bibtex-btn .copy-text');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>
+
+<!-- Statcounter tracking code (from template, uncomment if needed) -->
+<!--
+  You can add a tracker to track page visits by creating an account at statcounter.com
+-->
+
+</body>
+</html>
