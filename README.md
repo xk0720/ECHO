@@ -2,7 +2,7 @@
 
 ## ECHO: Towards Emotionally Appropriate and Contextually Aware Interactive Head Generation
 
-[Xiangyu Kong<sup>1,2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Xiaoyu Jin<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Yihan Pano<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Haoqin Sun<sup>3</sup>](https://github.com/xk0720/ECHO), &nbsp; [Hengde Zhu<sup>4</sup>](https://github.com/xk0720/ECHO), &nbsp; [Xiaoming Xu<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Xiaoming Wei<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Lu Liu<sup>1</sup>](https://github.com/xk0720/ECHO), &nbsp; [Siyang Song<sup>1</sup>](https://github.com/xk0720/ECHO) <br>
+[Xiangyu Kong<sup>1,2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Xiaoyu Jin<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Yihan Pan<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Haoqin Sun<sup>3</sup>](https://github.com/xk0720/ECHO), &nbsp; [Hengde Zhu<sup>4</sup>](https://github.com/xk0720/ECHO), &nbsp; [Xiaoming Xu<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Xiaoming Wei<sup>2</sup>](https://github.com/xk0720/ECHO), &nbsp; [Lu Liu<sup>1</sup>](https://github.com/xk0720/ECHO), &nbsp; [Siyang Song<sup>1</sup>](https://github.com/xk0720/ECHO) <br>
 <sup>1</sup>University of Exeter &nbsp; <sup>2</sup>Meituan &nbsp; <sup>3</sup>Nankai University &nbsp; <sup>4</sup>Tongji University &nbsp;
 
 [//]: # (&nbsp; &nbsp;)
